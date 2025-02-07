@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "BDUEzu12LRDXgnzoL58hbMgY5CdHM2BiWuquPzprQKs=",
+  "Source": "BusinessDirectory",
+  "BasePath": "_content/BusinessDirectory",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
