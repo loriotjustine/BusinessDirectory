@@ -20,11 +20,11 @@ public class PasswordValidator : ValidationAttribute
             return false;
         }
 
-        var hasNumber = new Regex(@"[0-9]{2,}");
-        var hasUpperLetters = new Regex(@"[A-Z]{2,}");
-        var hasLowerCase = new Regex(@"[a-z]{2,}");
+        var hasNumber = new Regex(@"[0-9]{1,}");
+        var hasUpperLetters = new Regex(@"[A-Z]{1,}");
+        var hasLowerCase = new Regex(@"[a-z]{1,}");
         var hasEnoughChars = new Regex(@".{8,15}");
-        var hasSymbol = new Regex(@"[.+*?!:;,^@/$(){}|]{3,}");
+        var hasSymbol = new Regex(@"[.+*?!:;,^@/$(){}|]{1,}");
 
         if (hasNumber.IsMatch(input) == false)
         {

@@ -34,6 +34,7 @@ public static class DependencyInjectionExtensions
     {
         builder.Services.AddScoped<IUsersRepository, UsersRepository>();
         builder.Services.AddScoped<IServicesRepository, ServicesRepository>();
+        builder.Services.AddScoped<ISitesRepository, SitesRepository>();
     }
 
     private static void AddServices(this WebApplicationBuilder builder)
@@ -41,6 +42,8 @@ public static class DependencyInjectionExtensions
         builder.Services.AddScoped<UsersService>();
         builder.Services.AddScoped<AuthService>();
         builder.Services.AddScoped<ServicesService>();
+        builder.Services.AddScoped<SitesService>();
+
     }
 
 }

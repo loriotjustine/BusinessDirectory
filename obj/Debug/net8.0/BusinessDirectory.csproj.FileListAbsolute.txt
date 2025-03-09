@@ -146,3 +146,4 @@ D:\Dev\Projets_cesi\Annuaire\BusinessDirectory\obj\Debug\net8.0\refint\BusinessD
 D:\Dev\Projets_cesi\Annuaire\BusinessDirectory\obj\Debug\net8.0\BusinessDirectory.pdb
 D:\Dev\Projets_cesi\Annuaire\BusinessDirectory\obj\Debug\net8.0\BusinessDirectory.genruntimeconfig.cache
 D:\Dev\Projets_cesi\Annuaire\BusinessDirectory\obj\Debug\net8.0\ref\BusinessDirectory.dll
+D:\Dev\Projets_cesi\Annuaire\BusinessDirectory\obj\Debug\net8.0\BusinessDirectory.sourcelink.json
