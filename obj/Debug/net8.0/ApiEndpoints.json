@@ -190,6 +190,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "BusinessDirectory.Controllers.SitesController",
+    "Method": "GetSiteTypes",
+    "RelativePath": "Sites/types",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BusinessDirectory.Controllers.UsersController",
     "Method": "Get",
     "RelativePath": "Users",
@@ -266,6 +276,64 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessDirectory.Controllers.UsersController",
+    "Method": "GetUsersByServiceId",
+    "RelativePath": "Users/ByService/{serviceId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "serviceId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessDirectory.Controllers.UsersController",
+    "Method": "GetUsersBySiteId",
+    "RelativePath": "Users/BySite/{siteId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "siteId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessDirectory.Controllers.UsersController",
+    "Method": "Login",
+    "RelativePath": "Users/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginRequest",
+        "Type": "BusinessDirectory.Models.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessDirectory.Controllers.UsersController",
+    "Method": "GetRoles",
+    "RelativePath": "Users/roles",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   }
 ]

@@ -85,4 +85,57 @@ public class UsersService
         await _usersRepository.DeleteAsync(user);
         return true;
     }
+
+    public async Task<User?> AuthenticateUser(string email, string password)
+    {
+        // Utilise FirstOrDefaultAsync pour rechercher un utilisateur par email
+        var user = await _usersRepository.FirstOrDefaultAsync(u => u.Email == email);
+
+        if (user == null)
+        {
+            Console.WriteLine($"Aucun utilisateur trouvé pour l'email {email}");
+            return null; // Aucun utilisateur trouvé
+        }
+
+        Console.WriteLine($"Utilisateur trouvé : {user.Email}");
+
+        // Afficher le salt et le mot de passe haché en base
+        Console.WriteLine($"Salt en base : {user.Salt}");
+        Console.WriteLine($"Mot de passe haché en base : {user.Password}");
+
+        // Convertir correctement le Salt depuis Hex
+        byte[] salt;
+        try
+        {
+            salt = Convert.FromHexString(user.Salt);
+            Console.WriteLine("Salt converti avec succès.");
+        }
+        catch (FormatException e)
+        {
+            Console.WriteLine($"Erreur lors de la conversion du Salt : {e.Message}");
+            return null;
+        }
+
+        // Vérifier le mot de passe avec la méthode existante
+        var passwordMatch = PasswordCrypter.VerifyPassword(password, user.Password, salt);
+
+        if (passwordMatch)
+        {
+            Console.WriteLine("Authentification réussie.");
+            return user; // Authentification réussie
+        }
+
+        Console.WriteLine("Échec de l'authentification : les mots de passe ne correspondent pas.");
+        return null;
+    }
+
+    public async Task<List<User>> GetUsersBySiteId(int siteId)
+    {
+        return await _usersRepository.GetUsersBySiteIdAsync(siteId);
+    }
+
+    public async Task<List<User>> GetUsersByServiceId(int serviceId)
+    {
+        return await _usersRepository.GetUsersByServiceIdAsync(serviceId);
+    }
 }

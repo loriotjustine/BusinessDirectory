@@ -1,8 +1,10 @@
 ﻿using BusinessDirectory.Enums;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BusinessDirectory.Models;
 
+[Table("Site")]
 public class Site
 {
     public int Id { get; set; }
@@ -11,4 +13,5 @@ public class Site
     public string SiteName { get; set; }
    
     public SiteType SiteType { get; set; }
+
 }

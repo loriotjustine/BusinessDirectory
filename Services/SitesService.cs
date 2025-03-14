@@ -16,9 +16,17 @@ namespace BusinessDirectory.Services
             _usersRepository = usersRepository;
         }
 
-        public async Task<List<Site>> GetAllSites()
+        public async Task<List<SiteDTO>> GetAllSites()
         {
-            return await _sitesRepository.ListAsync();
+            var sites = await _sitesRepository.ListAsync();
+
+            return sites.Select(s => new SiteDTO
+            {
+                Id = s.Id,
+                SiteName = s.SiteName,
+                SiteType = (int)s.SiteType, // Convertit l'énum en int
+                SiteTypeName = s.SiteType.ToString() // Convertit en string
+            }).ToList();
         }
 
         public async Task<Site?> GetSiteById(int id)

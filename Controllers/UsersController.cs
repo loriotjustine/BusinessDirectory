@@ -1,5 +1,7 @@
 ﻿using BusinessDirectory.DTOs;
+using BusinessDirectory.Enums;
 using BusinessDirectory.Exceptions;
+using BusinessDirectory.Models;
 using BusinessDirectory.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -77,5 +79,54 @@ public class UsersController : ControllerBase
         if (!deleted) return NotFound();
 
         return NoContent();
+    }
+
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] LoginRequest loginRequest)
+    {
+        var user = await _usersService.AuthenticateUser(loginRequest.Email, loginRequest.Password);
+
+        if (user == null)
+        {
+            return Unauthorized(new { message = "Email ou mot de passe incorrect." });
+        }
+
+        // Si l'utilisateur existe, on retourne les informations de l'utilisateur, incluant le rôle
+        return Ok(new { role = user.Role });
+    }
+
+    [HttpGet("BySite/{siteId}")]
+    public async Task<IActionResult> GetUsersBySiteId(int siteId)
+    {
+        var users = await _usersService.GetUsersBySiteId(siteId);
+        if (users == null || !users.Any())
+        {
+            return Ok(new List<User>());
+        }
+
+        return Ok(users);
+    }
+
+    [HttpGet("ByService/{serviceId}")]
+    public async Task<IActionResult> GetUsersByServiceId(int serviceId)
+    {
+        var users = await _usersService.GetUsersByServiceId(serviceId);
+        if (users == null || !users.Any())
+        {
+            return Ok(new List<User>());
+        }
+
+        return Ok(users);
+    }
+
+    [HttpGet("roles")]
+    public IActionResult GetRoles()
+    {
+        var roles = Enum.GetValues(typeof(Role))
+                        .Cast<Role>()
+                        .Select(r => new { id = (int)r, name = r.ToString() })
+                        .ToList();
+
+        return Ok(roles);
     }
 }

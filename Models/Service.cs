@@ -10,4 +10,5 @@ public class Service
 
     [Display(Name = "Nom du service")]
     public string ServiceName { get; set; }
+
 }

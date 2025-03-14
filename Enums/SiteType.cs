@@ -2,7 +2,7 @@
 {
     public enum SiteType
     {
-        Production, 
-        Administratif
+        Production = 0, 
+        Administratif = 1
     }
 }

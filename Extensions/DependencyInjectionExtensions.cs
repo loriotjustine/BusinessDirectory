@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using BusinessDirectory.Data;
 using BusinessDirectory.Repositories;
 using BusinessDirectory.Services;
+using BusinessDirectory.Models;
 
 namespace BusinessDirectory.Extensions;
 
@@ -35,6 +36,7 @@ public static class DependencyInjectionExtensions
         builder.Services.AddScoped<IUsersRepository, UsersRepository>();
         builder.Services.AddScoped<IServicesRepository, ServicesRepository>();
         builder.Services.AddScoped<ISitesRepository, SitesRepository>();
+        builder.Services.AddScoped<UsersService>();
     }
 
     private static void AddServices(this WebApplicationBuilder builder)

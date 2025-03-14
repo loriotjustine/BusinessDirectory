@@ -1,4 +1,5 @@
 ﻿using BusinessDirectory.DTOs;
+using BusinessDirectory.Enums;
 using BusinessDirectory.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +19,17 @@ namespace BusinessDirectory.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _sitesService.GetAllSites());
+            var sites = await _sitesService.GetAllSites();
+
+            var sitesWithTypeName = sites.Select(site => new
+            {
+                site.Id,
+                site.SiteName,
+                site.SiteType,
+                SiteTypeName = Enum.GetName(typeof(SiteType), site.SiteType) // Mappe correctement les valeurs
+            }).ToList();
+
+            return Ok(sitesWithTypeName);
         }
 
         [HttpGet("{id}")]
@@ -63,6 +74,17 @@ namespace BusinessDirectory.Controllers
             if (!deleted) return NotFound();
 
             return NoContent();
+        }
+
+        [HttpGet("types")]
+        public IActionResult GetSiteTypes()
+        {
+            // Récupérer les valeurs de l'énumération et les transformer en une liste d'objets
+            var siteTypes = Enum.GetValues(typeof(SiteType))
+                                .Cast<SiteType>()
+                                .Select(e => new { Value = (int)e, Name = e.ToString() })
+                                .ToList();
+            return Ok(siteTypes);
         }
 
     }

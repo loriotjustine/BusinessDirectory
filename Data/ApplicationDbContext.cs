@@ -12,7 +12,7 @@ public class ApplicationDbContext : DbContext
     }
 
     public DbSet<User> Users { get; set; }
-    public DbSet<Site> Site { get; set; }
+    public DbSet<Site> Sites { get; set; }
     public DbSet<Service> Services { get; set; }
 
 }
