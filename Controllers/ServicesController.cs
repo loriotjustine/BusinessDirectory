@@ -1,7 +1,6 @@
 ﻿using BusinessDirectory.DTOs;
 using BusinessDirectory.Exceptions;
 using BusinessDirectory.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BusinessDirectory.Controllers;
@@ -36,7 +35,6 @@ public class ServicesController : ControllerBase
     }
 
     [HttpPost]
-    //[Authorize(Roles = "Admin")] // Pour ajouter une vérification du rôle au niveau de la route, on procède en ajoutant une nouvelle annotation possédant le paramètre Roles ainsi qu'une liste des rôles possible pour la route
     public async Task<IActionResult> Create([FromBody] CreateServiceDTO serviceDTO)
     {
         try

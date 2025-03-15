@@ -36,7 +36,6 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost]
-    //[Authorize(Roles = "Admin")] // Pour ajouter une vérification du rôle au niveau de la route, on procède en ajoutant une nouvelle annotation possédant le paramètre Roles ainsi qu'une liste des rôles possible pour la route
     public async Task<IActionResult> Create([FromBody] CreateUserDTO userDTO)
     {
         try
@@ -91,7 +90,6 @@ public class UsersController : ControllerBase
             return Unauthorized(new { message = "Email ou mot de passe incorrect." });
         }
 
-        // Si l'utilisateur existe, on retourne les informations de l'utilisateur, incluant le rôle
         return Ok(new { role = user.Role });
     }
 

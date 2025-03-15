@@ -26,7 +26,7 @@ namespace BusinessDirectory.Controllers
                 site.Id,
                 site.SiteName,
                 site.SiteType,
-                SiteTypeName = Enum.GetName(typeof(SiteType), site.SiteType) // Mappe correctement les valeurs
+                SiteTypeName = Enum.GetName(typeof(SiteType), site.SiteType)
             }).ToList();
 
             return Ok(sitesWithTypeName);
@@ -79,7 +79,6 @@ namespace BusinessDirectory.Controllers
         [HttpGet("types")]
         public IActionResult GetSiteTypes()
         {
-            // Récupérer les valeurs de l'énumération et les transformer en une liste d'objets
             var siteTypes = Enum.GetValues(typeof(SiteType))
                                 .Cast<SiteType>()
                                 .Select(e => new { Value = (int)e, Name = e.ToString() })

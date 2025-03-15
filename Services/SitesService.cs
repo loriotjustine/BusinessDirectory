@@ -24,8 +24,8 @@ namespace BusinessDirectory.Services
             {
                 Id = s.Id,
                 SiteName = s.SiteName,
-                SiteType = (int)s.SiteType, // Convertit l'énum en int
-                SiteTypeName = s.SiteType.ToString() // Convertit en string
+                SiteType = (int)s.SiteType,
+                SiteTypeName = s.SiteType.ToString()
             }).ToList();
         }
 

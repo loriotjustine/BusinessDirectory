@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Runtime.CompilerServices;
 using BusinessDirectory.Data;
 using BusinessDirectory.Repositories;
 using BusinessDirectory.Services;
-using BusinessDirectory.Models;
 
 namespace BusinessDirectory.Extensions;
 

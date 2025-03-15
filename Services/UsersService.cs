@@ -88,23 +88,20 @@ public class UsersService
 
     public async Task<User?> AuthenticateUser(string email, string password)
     {
-        // Utilise FirstOrDefaultAsync pour rechercher un utilisateur par email
         var user = await _usersRepository.FirstOrDefaultAsync(u => u.Email == email);
 
         if (user == null)
         {
             Console.WriteLine($"Aucun utilisateur trouvé pour l'email {email}");
-            return null; // Aucun utilisateur trouvé
+            return null;
         }
 
         Console.WriteLine($"Utilisateur trouvé : {user.Email}");
-
-        // Afficher le salt et le mot de passe haché en base
         Console.WriteLine($"Salt en base : {user.Salt}");
         Console.WriteLine($"Mot de passe haché en base : {user.Password}");
 
-        // Convertir correctement le Salt depuis Hex
         byte[] salt;
+
         try
         {
             salt = Convert.FromHexString(user.Salt);
@@ -116,13 +113,12 @@ public class UsersService
             return null;
         }
 
-        // Vérifier le mot de passe avec la méthode existante
         var passwordMatch = PasswordCrypter.VerifyPassword(password, user.Password, salt);
 
         if (passwordMatch)
         {
             Console.WriteLine("Authentification réussie.");
-            return user; // Authentification réussie
+            return user;
         }
 
         Console.WriteLine("Échec de l'authentification : les mots de passe ne correspondent pas.");

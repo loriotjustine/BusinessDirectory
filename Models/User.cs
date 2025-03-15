@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using BusinessDirectory.Enums;
+﻿using BusinessDirectory.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
