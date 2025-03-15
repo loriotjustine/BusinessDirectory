@@ -57,7 +57,7 @@ public class UsersRepository : BaseRepository<User>, IUsersRepository
     public async Task<List<User>> GetUsersByServiceIdAsync(int serviceId)
     {
         return await _context.Users
-                             .Where(u => u.SiteId == serviceId)
+                             .Where(u => u.ServiceId == serviceId)
                              .ToListAsync();
     }
 
